@@ -10,6 +10,8 @@ fi
 NGINX_CONFIG_PATH=/build/config/nginx-web2py
 
 apt-get update
+apt-get install -y python3-pip
+pip3 install selenium
 
 mkdir -p /config/etc/nginx-web2py/conf.d
 cp ${NGINX_CONFIG_PATH}/default-web2py.conf /config/etc/nginx-web2py/conf.d/default-web2py.conf
@@ -19,18 +21,19 @@ cp ${NGINX_CONFIG_PATH}/default-web2py.conf /config/etc/nginx-web2py/conf.d/defa
 
 if [ "${WEB2PY_MIN}" == false ]; then
   apt-get install -y --no-install-recommends git-core
-  pip install gitpython
+  pip3 install gitpython
 fi
 
 ## Install Web2py
 cd /opt
-wget http://web2py.com/examples/static/web2py_src.zip
+# wget http://web2py.com/examples/static/web2py_src.zip
+wget https://mdipierro.pythonanywhere.com/examples/static/web2py_src.zip
 mkdir tmp
 unzip web2py_src.zip -d tmp
 
 if [ "${WEB2PY_MIN}" == true ]; then
   cd tmp/web2py
-  python scripts/make_min_web2py.py ../../tmp/web2py-min
+  python3 scripts/make_min_web2py.py ../../tmp/web2py-min
   mv ../../tmp/web2py-min ../../web2py
   cd ../../
 else

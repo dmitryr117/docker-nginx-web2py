@@ -13,12 +13,12 @@ UWSGI_BUILD_PATH=/build/services/uwsgi
 apt-get install -y --no-install-recommends \
   build-essential \
   libxml2-dev \
-  python-dev \
-  python-pip \
+  python3-dev \
+  python3-pip \
   unzip
 
-pip install setuptools --upgrade
-PIPPATH=`which pip`
+pip3 install setuptools --upgrade
+PIPPATH=`which pip3`
 $PIPPATH install --upgrade uwsgi
 
 mkdir -p /etc/uwsgi

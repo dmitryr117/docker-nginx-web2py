@@ -1,6 +1,6 @@
 
-NAME = madharjan/docker-nginx-web2py
-VERSION = 2.14.6
+NAME = dmitryr117/docker-nginx-web2py
+VERSION = 2.18.3
 
 .PHONY: all build run tests clean tag_latest release clean_images
 
